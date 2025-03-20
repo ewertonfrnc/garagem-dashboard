@@ -1,4 +1,25 @@
 import Aura from "@primeuix/themes/aura";
+import { definePreset } from "@primeuix/themes";
+
+const MyPreset = definePreset(Aura, {
+  components: {
+    menu: {
+      colorScheme: {
+        light: {
+          background: "transparent",
+          border: {
+            color: "transparent",
+          },
+          item: {
+            focus: {
+              background: "white",
+            },
+          },
+        },
+      },
+    },
+  },
+});
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -21,7 +42,7 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       ripple: true,
-      theme: { preset: Aura },
+      theme: { preset: MyPreset },
     },
   },
 

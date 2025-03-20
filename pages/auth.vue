@@ -24,6 +24,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 
+definePageMeta({ layout: "auth" });
+
 const isLogin = ref(false);
 
 function toggleForm() {

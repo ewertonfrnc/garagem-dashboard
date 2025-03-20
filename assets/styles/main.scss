@@ -7,5 +7,5 @@
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-  filter: blur(1rem);
+  transform: translate(5px, 0);
 }
