@@ -40,7 +40,7 @@ onMounted(() => {
 
 <style scoped>
 .profile {
-  padding: 0 1rem;
+  padding: 1rem;
 
   h1 {
     font-size: 1.5em;

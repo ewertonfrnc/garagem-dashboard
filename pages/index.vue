@@ -47,7 +47,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .users {
-  padding: 0 1rem;
+  padding: 1rem;
 
   &__header {
     h1 {

@@ -15,7 +15,7 @@
     <Toast />
 
     <main class="layout__main">
-      <Breadcrumb :home="home" :model="breadcrumbItem" />
+      <!-- <Breadcrumb :home="home" :model="breadcrumbItem" /> -->
 
       <!-- <Divider /> -->
 
@@ -25,19 +25,33 @@
 </template>
 
 <script setup lang="ts">
+const router = useRouter();
+
 const items = ref([
   {
     label: "Clientes",
     items: [
-      { label: "Todos os clientes", icon: "pi pi-users" },
-      { label: "Arquivados", icon: "pi pi-inbox" },
+      {
+        label: "Todos os clientes",
+        icon: "pi pi-users",
+        command: () => {
+          router.push("/");
+        },
+      },
+      { label: "Arquivados", icon: "pi pi-inbox", command: () => {} },
     ],
   },
   {
     label: "Biblioteca",
     items: [
-      { label: "Exercícios", icon: "pi pi-wave-pulse" },
-      { label: "Treinos", icon: "pi pi-map" },
+      {
+        label: "Exercícios",
+        icon: "pi pi-wave-pulse",
+        command: () => {
+          router.push("/library/exercises");
+        },
+      },
+      { label: "Treinos", icon: "pi pi-map", command: () => {} },
     ],
   },
 ]);
