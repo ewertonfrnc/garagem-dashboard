@@ -1,3 +1,4 @@
+import { defineStore } from "pinia";
 import usersService from "~/services/users.service";
 
 export const useUsersStore = defineStore("users", {

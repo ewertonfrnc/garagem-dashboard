@@ -4,52 +4,14 @@
       <h1>Exercícios</h1>
     </div>
 
-    <div class="exercises__actions">
-      <div class="exercises__search-filter">
-        <Form
-          v-slot="$form"
-          :initial-values="initialSearchValue"
-          @submit="onFormSubmit"
-        >
-          <IconField>
-            <InputIcon class="pi pi-search" />
-            <InputText
-              name="searchValue"
-              placeholder="Procure por um exercício"
-              fluid
-              size="small"
-              variant="filled"
-            />
-          </IconField>
-        </Form>
-      </div>
-
-      <Button
-        label="Adicionar exercício"
-        icon="pi pi-plus"
-        size="small"
-        severity="contrast"
-      />
+    <div class="exercises__content">
+      <LibraryExercisesActions />
+      <LibraryExercisesTable />
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive } from "vue";
-import type { FormSubmitEvent } from "@primevue/forms/form";
-
-const initialSearchValue = reactive({
-  searchValue: "",
-});
-
-const state = reactive({
-  loading: false,
-});
-
-function onFormSubmit({ values }: FormSubmitEvent) {
-  console.log("onFormSubmit", values);
-}
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .exercises {
@@ -63,13 +25,9 @@ function onFormSubmit({ values }: FormSubmitEvent) {
     }
   }
 
-  &__actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__search-filter {
-    width: 25%;
+  &__content {
+    display: grid;
+    gap: 2rem;
   }
 }
 </style>

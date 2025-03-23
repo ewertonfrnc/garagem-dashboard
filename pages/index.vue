@@ -20,6 +20,8 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from "vue-router";
+
 const usersStore = useUsersStore();
 
 const state = reactive({
@@ -30,8 +32,6 @@ async function getAllStudents() {
   const response = await usersStore.fetchAllStudents();
   state.options = response.users;
 }
-
-import { useRouter } from "vue-router";
 
 const router = useRouter();
 

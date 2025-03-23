@@ -15,10 +15,6 @@
     <Toast />
 
     <main class="layout__main">
-      <!-- <Breadcrumb :home="home" :model="breadcrumbItem" /> -->
-
-      <!-- <Divider /> -->
-
       <slot />
     </main>
   </div>
@@ -55,23 +51,23 @@ const items = ref([
     ],
   },
 ]);
-
-const home = ref({
-  label: "Página Inicial",
-});
-
-const breadcrumbItem = ref([{ label: "Alunos" }, { label: "Perfil do aluno" }]);
 </script>
 
 <style lang="scss" scoped>
 .layout {
   background-color: #f8fafc;
-  height: 100vh;
   display: flex;
+  position: relative;
 
   &__aside {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 250px;
+    height: 100vh;
     padding: 1rem;
+    background-color: #f8fafc;
+    overflow-y: auto;
   }
 
   &__aside-content {
@@ -88,10 +84,12 @@ const breadcrumbItem = ref([{ label: "Alunos" }, { label: "Perfil do aluno" }]);
     position: relative;
     border: 1px solid #e2e9f0;
     padding: 1rem;
-    margin: 1rem 1rem 1rem 0;
+    margin: 1rem 1rem 1rem 250px;
     background-color: #fff;
     border-radius: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 2rem);
+    overflow-y: auto;
   }
 }
 </style>

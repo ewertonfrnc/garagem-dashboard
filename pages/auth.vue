@@ -42,6 +42,7 @@ function toggleForm() {
 
   &__card {
     width: 600px;
+    background: white;
   }
 
   &__card-content {

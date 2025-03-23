@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <BaseToast />
+    <Toast />
     <slot />
   </div>
 </template>
+
+<script lang="ts" setup></script>
 
 <style scoped lang="scss">
 .container {
