@@ -4,6 +4,7 @@ import type {
   CreateExerciseResponse,
   ExerciseModalityResponse,
   GetAllExercisesResponse,
+  GetExerciseCategoriesResponse,
   MuscleGroupResponse,
 } from "~/interfaces/exercises.interfaces";
 
@@ -20,6 +21,11 @@ class ExercisesService {
 
   async getMuscleGroups(): Promise<MuscleGroupResponse> {
     const response = await api().get("/muscle-groups");
+    return response.data;
+  }
+
+  async getExerciseCategories(): Promise<GetExerciseCategoriesResponse> {
+    const response = await api().get("/exercise-categories");
     return response.data;
   }
 

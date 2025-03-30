@@ -29,6 +29,9 @@ export const useExercisesStore = defineStore("exercises", {
     async fetchMuscleGroups() {
       return await exercisesService.getMuscleGroups();
     },
+    async fetchExerciseCategories() {
+      return await exercisesService.getExerciseCategories();
+    },
     async createExercise(payload: CreateExercisePayload) {
       this.loading = true;
 

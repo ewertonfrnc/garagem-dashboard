@@ -48,3 +48,22 @@ export type GetAllExercisesResponse = {
   results: number;
   exercises: Exercise[];
 };
+
+export type ExerciseCategory = {
+  id: number;
+  label: string;
+  code: string;
+  fields: Field[];
+};
+
+export type Field = {
+  id: number;
+  label: string;
+  code: string;
+};
+
+export type GetExerciseCategoriesResponse = {
+  status: string;
+  results: number;
+  categories: ExerciseCategory[];
+};

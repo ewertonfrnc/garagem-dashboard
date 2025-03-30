@@ -75,6 +75,26 @@
             {{ $form.muscleGroups.error.message }}
           </Message>
         </div>
+
+        <div class="exercises__form-field">
+          <Select
+            name="category"
+            fluid
+            size="small"
+            variant="filled"
+            option-label="label"
+            :loading="state.loading"
+            :options="selectOptions.categories"
+            placeholder="Categoria"
+          >
+            <template #option="{ option }">
+              <div class="exercises__form-select-option">
+                <span>{{ option.label }}</span>
+                <small> {{ formatCategoryFields(option.fields) }} </small>
+              </div>
+            </template>
+          </Select>
+        </div>
       </div>
 
       <Divider />
@@ -89,23 +109,6 @@
         />
       </div>
     </Form>
-
-    <!-- <div class="exercises__upload">
-        <InputText
-          name="instructions"
-          placeholder="Add exercise instructions"
-          fluid
-          size="small"
-          variant="filled"
-        />
-        <InputText
-          name="videoLink"
-          placeholder="Vimeo or Youtube link"
-          fluid
-          size="small"
-          variant="filled"
-        />
-      </div> -->
   </div>
 </template>
 
@@ -120,6 +123,8 @@ import type {
   Exercise,
   ExerciseModality,
   MuscleGroup,
+  ExerciseCategory,
+  Field,
 } from "~/interfaces/exercises.interfaces";
 
 const toast = useToast();
@@ -147,6 +152,7 @@ const formValues = reactive<CreateExercisePayload>({
 const selectOptions = reactive({
   modalities: [] as ExerciseModality[],
   muscleGroups: [] as MuscleGroup[],
+  categories: [] as ExerciseCategory[],
 });
 
 const resolver = ref(
@@ -155,7 +161,7 @@ const resolver = ref(
       name: z.string().trim().min(1, { message: "Campo obrigatório" }),
       exerciseModalityId: z.union([
         z.object({ label: z.string().min(1, "Campo obrigatório") }),
-        z.any().refine((val) => false, { message: "Campo obrigatório" }),
+        z.any().refine((_val) => false, { message: "Campo obrigatório" }),
       ]),
       muscleGroups: z
         .array(z.object({ label: z.string().min(1, "Campo obrigatório") }))
@@ -173,8 +179,10 @@ async function fetchFormInitialValues() {
   const { data: muscleGroupData, error: muscleGroupError } = await tryCatch(
     store.fetchMuscleGroups()
   );
+  const { data: exerciseCategoriesData, error: exerciseCategoriesError } =
+    await tryCatch(store.fetchExerciseCategories());
 
-  if (modalitiesError || muscleGroupError) {
+  if (modalitiesError || muscleGroupError || exerciseCategoriesError) {
     toast.add({
       severity: "error",
       summary: "Erro ao carregar os dados",
@@ -187,7 +195,15 @@ async function fetchFormInitialValues() {
 
   selectOptions.modalities = modalitiesData.modalities;
   selectOptions.muscleGroups = muscleGroupData.muscleGroups;
+  selectOptions.categories = exerciseCategoriesData.categories;
   state.loading = false;
+}
+
+function formatCategoryFields(fields: Field[]) {
+  return fields
+    .filter((_, idx) => idx < 2)
+    .map((field) => field.label)
+    .join(" x ");
 }
 
 function handleExerciseModalityChange({ value }: SelectChangeEvent) {
@@ -223,11 +239,23 @@ onMounted(() => {
       gap: 0.5rem;
     }
 
-    &-field {
-    }
-
     &-upload {
       display: grid;
+    }
+
+    &-select-option {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      span {
+        font-weight: 600;
+      }
+
+      small {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
     }
   }
 }
