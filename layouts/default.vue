@@ -47,7 +47,13 @@ const items = ref([
           router.push("/library/exercises");
         },
       },
-      { label: "Treinos", icon: "pi pi-map", command: () => {} },
+      {
+        label: "Treinos",
+        icon: "pi pi-map",
+        command: () => {
+          router.push("/library/workouts");
+        },
+      },
     ],
   },
 ]);

@@ -21,23 +21,30 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
+import type { User } from "~/interfaces/user.interfaces";
 
-const usersStore = useUsersStore();
+const store = useUsersStore();
 
 const state = reactive({
-  options: [],
+  options: [] as User[],
 });
 
 async function getAllStudents() {
-  const response = await usersStore.fetchAllStudents();
-  state.options = response.users;
+  const { data, error } = await tryCatch(store.fetchAllStudents());
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  state.options = data.users;
 }
 
 const router = useRouter();
 
-function onRowSelect(event: any) {
+function onRowSelect(event) {
   if (!event.data) return;
-  router.push(`/users/${event.data.id}`);
+  router.push(`/student/${event.data.id}/overview`);
 }
 
 onMounted(async () => {

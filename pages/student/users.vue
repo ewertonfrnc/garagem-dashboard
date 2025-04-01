@@ -4,15 +4,6 @@
       <h1>Seus alunos</h1>
     </div>
 
-    <div class="users__filters">
-      <!-- <Select
-        v-model="state.selectedOption"
-        :options="state.options"
-        option-label="name"
-        placeholder="Selecione uma categoria"
-      /> -->
-    </div>
-
     <div class="users__list">
       <DataTable
         :value="state.options"
@@ -44,7 +35,4 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss" scoped>
-.users {
-}
-</style>
+<style lang="scss" scoped></style>

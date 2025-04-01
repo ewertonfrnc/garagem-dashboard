@@ -1,17 +1,21 @@
+import type {
+  FetchStudentResponse,
+  FetchStudentsResponse,
+} from "~/interfaces/user.interfaces";
 import api from "./api.service";
 
 export class UsersService {
   async fetchAllStudents() {
-    const response = await api().get("/users", {
+    const response = await api().get<FetchStudentsResponse>("/users", {
       params: {
-        roleId: 1,
+        roleId: 2,
       },
     });
     return response.data;
   }
 
   async fetchOneStudent(userId: number) {
-    const response = await api().get(`/users/${userId}`);
+    const response = await api().get<FetchStudentResponse>(`/users/${userId}`);
     return response.data;
   }
 }

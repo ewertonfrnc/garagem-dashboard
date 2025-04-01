@@ -42,7 +42,10 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       ripple: true,
-      theme: { preset: MyPreset },
+      theme: {
+        preset: MyPreset,
+        darkModeSelector: false,
+      },
     },
   },
 
@@ -53,4 +56,6 @@ export default defineNuxtConfig({
       baseUrl: process.env.NUXT_BASE_URL,
     },
   },
+
+  ssr: false,
 });
