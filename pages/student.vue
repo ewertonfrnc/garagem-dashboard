@@ -17,20 +17,20 @@
       </Tabs>
     </div>
 
-    <NuxtPage :loading="state.loading" />
+    <NuxtPage :state="state" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import type { User } from "~/interfaces/user.interfaces";
+import type { StudentState, User } from "~/interfaces/user.interfaces";
 
 const route = useRoute();
 const router = useRouter();
 const store = useUsersStore();
 
-const state = reactive({
+const state = reactive<StudentState>({
   loading: false,
   user: null as User | null,
 });

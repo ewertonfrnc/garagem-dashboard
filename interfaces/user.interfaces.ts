@@ -20,3 +20,8 @@ export type FetchStudentResponse = {
   status: string;
   user: User;
 };
+
+export type StudentState = {
+  loading: boolean;
+  user: User | null;
+};
