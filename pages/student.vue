@@ -17,17 +17,18 @@
       </Tabs>
     </div>
 
-    <NuxtPage :state="state" />
+    <template v-if="state.user">
+      <NuxtPage :user="state.user" />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import type { StudentState, User } from "~/interfaces/user.interfaces";
 
 const route = useRoute();
-const router = useRouter();
 const store = useUsersStore();
 
 const state = reactive<StudentState>({

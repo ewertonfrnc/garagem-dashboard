@@ -18,8 +18,18 @@ export type Workout = {
   exercises: WorkoutExercise[];
 };
 
+export type StudentWorkouts = {
+  id: number;
+  date: string;
+  notes: string;
+  completed: boolean;
+  createdAt: string;
+  updatedAt: string;
+  workout: Workout;
+};
+
 export type WorkoutsResponse = {
   status: string;
   results: number;
-  workouts: Workout[];
+  studentWorkouts: StudentWorkouts[];
 };

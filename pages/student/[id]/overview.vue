@@ -1,14 +1,15 @@
 <template>
-  <div v-if="!props.state.loading">
+  <div>
     <h1>Overview</h1>
+    <pre>{{ props }}</pre>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { StudentState } from "~/interfaces/user.interfaces";
+import type { User } from "~/interfaces/user.interfaces";
 
-type Props = { state: StudentState };
+type Props = { user: User };
 const props = defineProps<Props>();
 
-definePageMeta({ pageTransition: false });
+// definePageMeta({ pageTransition: false });
 </script>

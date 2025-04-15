@@ -9,5 +9,8 @@ export const useWorkoutsStore = defineStore("workouts", {
     async fetchAllWorkouts() {
       return await workoutsService.getAllWorkouts();
     },
+    async fetchUserWorkouts(userId: number) {
+      return await workoutsService.getUserWorkouts(userId);
+    },
   },
 });
