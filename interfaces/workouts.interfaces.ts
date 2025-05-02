@@ -33,3 +33,11 @@ export type WorkoutsResponse = {
   results: number;
   studentWorkouts: StudentWorkouts[];
 };
+
+export type CreateWorkoutPayload = {
+  name: string;
+  description: string;
+  exercises: {
+    connect: { id: number }[];
+  };
+};

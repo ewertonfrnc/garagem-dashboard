@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@primevue/nuxt-module": "^4.3.2",
+    "prettier": "^3.5.3",
     "sass": "^1.85.1"
   }
 }

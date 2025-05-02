@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { User } from "~/interfaces/user.interfaces";
 import type { StudentWorkouts } from "~/interfaces/workouts.interfaces";
 
@@ -55,7 +55,7 @@ async function getUserWorkouts() {
   if (!props.user) return;
 
   const { data, error } = await tryCatch(
-    store.fetchUserWorkouts(props.user.id)
+    store.fetchUserWorkouts(props.user.id),
   );
 
   if (error) {
@@ -69,17 +69,10 @@ async function getUserWorkouts() {
 onMounted(() => {
   getUserWorkouts();
 });
-// definePageMeta({ pageTransition: false });
 </script>
 
 <style lang="scss" scoped>
 .calendar {
-  // &__container {
-  // }
-
-  // &__list {
-  // }
-
   &__item {
     padding: 1rem 2rem;
     border-bottom: 1px solid #dde3ea;
@@ -107,12 +100,6 @@ onMounted(() => {
       flex-direction: column;
       gap: 0.5rem;
     }
-
-    // &-exercise {
-    // &-name {
-    // color: #64748b;
-    // }
-    // }
   }
 }
 </style>

@@ -4,6 +4,8 @@
       <h1>Treinos</h1>
     </div>
 
+    <LibraryHeaderActions />
+
     <div class="workouts__content">
       <DataTable :value="state.workouts" striped-rows>
         <Column field="name" header="Nome" />
