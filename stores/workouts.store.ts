@@ -12,5 +12,9 @@ export const useWorkoutsStore = defineStore("workouts", {
     async fetchUserWorkouts(userId: number) {
       return await workoutsService.getUserWorkouts(userId);
     },
+    async createWorkout(workout) {
+      console.log("Store Creating workout:", workout);
+      return await workoutsService.createWorkout(workout);
+    },
   },
 });

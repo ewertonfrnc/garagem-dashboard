@@ -31,7 +31,7 @@ export type StudentWorkouts = {
 export type WorkoutsResponse = {
   status: string;
   results: number;
-  studentWorkouts: StudentWorkouts[];
+  workouts: Workout[];
 };
 
 export type CreateWorkoutPayload = {

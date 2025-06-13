@@ -4,7 +4,7 @@
       <h1>Treinos</h1>
     </div>
 
-    <LibraryHeaderActions />
+    <LibraryHeaderActions @refreshWorkouts="getWorkouts" />
 
     <div class="workouts__content">
       <DataTable :value="state.workouts" striped-rows>

@@ -1,25 +1,25 @@
 import Aura from "@primeuix/themes/aura";
-import { definePreset } from "@primeuix/themes";
+// import { definePreset } from "@primeuix/themes";
 
-const MyPreset = definePreset(Aura, {
-  components: {
-    menu: {
-      colorScheme: {
-        light: {
-          background: "transparent",
-          border: {
-            color: "transparent",
-          },
-          item: {
-            focus: {
-              background: "white",
-            },
-          },
-        },
-      },
-    },
-  },
-});
+// const MyPreset = definePreset(Aura, {
+//   components: {
+//     menu: {
+//       colorScheme: {
+//         light: {
+//           background: "transparent",
+//           border: {
+//             color: "transparent",
+//           },
+//           item: {
+//             focus: {
+//               background: "white",
+//             },
+//           },
+//         },
+//       },
+//     },
+//   },
+// });
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -41,9 +41,9 @@ export default defineNuxtConfig({
 
   primevue: {
     options: {
-      ripple: true,
+      ripple: false,
       theme: {
-        preset: MyPreset,
+        preset: Aura,
         darkModeSelector: false,
       },
     },

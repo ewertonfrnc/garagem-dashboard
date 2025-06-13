@@ -16,6 +16,7 @@ export type Exercise = {
   image: string;
   exerciseModality: ExerciseModality;
   muscleGroups: MuscleGroup[];
+  category: ExerciseCategory;
 };
 
 export type ExerciseModalityResponse = {

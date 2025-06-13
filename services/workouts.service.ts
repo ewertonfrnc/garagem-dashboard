@@ -15,6 +15,12 @@ class WorkoutsService {
     });
     return response.data;
   }
+
+  async createWorkout(workout) {
+    console.log("Service Creating workout:", workout);
+    const response = await api().post("/workouts", workout);
+    return response.data;
+  }
 }
 
 export default new WorkoutsService();

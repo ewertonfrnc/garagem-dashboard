@@ -61,7 +61,6 @@ const items = ref([
 
 <style lang="scss" scoped>
 .layout {
-  background-color: #f8fafc;
   display: flex;
   position: relative;
 
@@ -72,7 +71,6 @@ const items = ref([
     width: 250px;
     height: 100vh;
     padding: 1rem;
-    background-color: #f8fafc;
     overflow-y: auto;
   }
 
@@ -91,7 +89,6 @@ const items = ref([
     border: 1px solid #e2e9f0;
     padding: 1rem;
     margin: 1rem 1rem 1rem 250px;
-    background-color: #fff;
     border-radius: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-height: calc(100vh - 2rem);

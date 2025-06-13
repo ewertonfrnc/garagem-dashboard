@@ -7,9 +7,7 @@ import api from "./api.service";
 export class UsersService {
   async fetchAllStudents() {
     const response = await api().get<FetchStudentsResponse>("/users", {
-      params: {
-        roleId: 2,
-      },
+      params: {},
     });
     return response.data;
   }

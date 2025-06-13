@@ -1,7 +1,5 @@
 import axios from "axios";
 
-export const MOCKED = true;
-
 export default function api() {
   const {
     public: { baseUrl },
