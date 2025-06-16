@@ -177,7 +177,7 @@
       <div class="workouts-form__actions">
         <Button
           type="submit"
-          label="Criar treino"
+          :label="props.selectedWorkout ? 'Salvar alterações' : 'Criar treino'"
           severity="contrast"
           :loading="state.loading"
           size="small"
@@ -249,6 +249,9 @@ interface WorkoutData {
 
 const emit = defineEmits(["submit"]);
 
+type Props = { selectedWorkout: WorkoutData | null };
+const props = defineProps<Props>();
+
 const store = useExercisesStore();
 const toast = useToast();
 
@@ -257,10 +260,11 @@ const state = reactive({
 });
 
 const workoutData = reactive<WorkoutData>({
-  name: "",
-  description: "",
-  exercises: [],
+  name: props.selectedWorkout?.name || "",
+  description: props.selectedWorkout?.description || "",
+  exercises: props.selectedWorkout?.exercises || [],
 });
+
 const exerciseToAdd = ref<Exercise | null>(null);
 const availableExercises = computed(() => store.exercises || []);
 

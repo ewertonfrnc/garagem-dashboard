@@ -27,52 +27,21 @@
       @click="handleModalVisible"
     />
   </div>
-
-  <Dialog
-    v-model:visible="state.isModalVisible"
-    :draggable="false"
-    :style="{ width: '40rem' }"
-    header="Detalhes do treino"
-    modal
-  >
-    <LibraryWorkoutsForm @submit="onFormSubmit" />
-  </Dialog>
 </template>
 
 <script lang="ts" setup>
-import type { CreateWorkoutPayload } from "~/interfaces/workouts.interfaces";
-const store = useWorkoutsStore();
-const toast = useToast();
+enum EmittedEvents {
+  ChangeWorkoutVisibility = "change-workout-visibility",
+}
 
-const emit = defineEmits(["refreshWorkouts"]);
+const emit = defineEmits([EmittedEvents.ChangeWorkoutVisibility]);
 
 const initialSearchValue = reactive({
   searchValue: "",
 });
 
-const state = reactive({
-  isModalVisible: false,
-});
-
 function handleModalVisible() {
-  state.isModalVisible = !state.isModalVisible;
-}
-
-async function onFormSubmit(payload: CreateWorkoutPayload) {
-  const { error } = await tryCatch(store.createWorkout(payload));
-
-  if (error) {
-    toast.add({
-      severity: "error",
-      summary: "Erro ao criar exercício",
-      detail: "Erro ao criar exercício, tente novamente",
-      life: 3000,
-    });
-    return;
-  }
-
-  handleModalVisible();
-  emit("refreshWorkouts");
+  emit(EmittedEvents.ChangeWorkoutVisibility);
 }
 </script>
 
